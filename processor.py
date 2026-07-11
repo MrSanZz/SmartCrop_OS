@@ -127,13 +127,13 @@ def _contour_to_dense_polygon(
     smooth_alpha:float = 0.35,
 ) -> np.ndarray:
     edges = _edge_map(cv_img)
-    # 1. Resample merata
+    # 1. Resample merata / Resampling equally
     dense = _resample_contour(contour, target_pts)
     # 2. Pre-smoothing
     dense = _smooth_polygon(dense, iterations=smooth_iter, alpha=smooth_alpha)
     # 3. Edge snap
     dense = _snap_dense_polygon(dense, edges, snap_radius=snap_r)
-    # 4. Post-smoothing ringan agar titik snap tidak terlihat kasar
+    # 4. Post-smoothing ringan agar titik snap tidak terlihat kasar / Post smoothing so snapped dot wouldn't look rough
     dense = _smooth_polygon(dense, iterations=2, alpha=0.20)
 
     return dense.astype(np.float32)
