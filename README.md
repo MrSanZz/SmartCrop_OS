@@ -1,1 +1,1 @@
-Use for learn or smth, 
+Use for learn or smth
