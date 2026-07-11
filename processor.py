@@ -133,7 +133,7 @@ def _contour_to_dense_polygon(
     dense = _smooth_polygon(dense, iterations=smooth_iter, alpha=smooth_alpha)
     # 3. Edge snap
     dense = _snap_dense_polygon(dense, edges, snap_radius=snap_r)
-    # 4. Post-smoothing ringan agar titik snap tidak terlihat kasar / Post smoothing so snapped dot wouldn't look rough
+    # 4. Post-smoothing ringan agar titik snap tidak terlihat kasar / Light post-smoothing so snapped point wouldn't look rough
     dense = _smooth_polygon(dense, iterations=2, alpha=0.20)
 
     return dense.astype(np.float32)
